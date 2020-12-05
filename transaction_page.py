@@ -14,11 +14,16 @@ while loggedOn:
         print(f"Bank account balance ${format(amount, '.2f')} ")
     elif selection == 2:
         withdraw = float(input("How much will you withdraw?"))
-        amount -= withdraw
-        print(f"Withdraw in the amount of ${format(withdraw, '.2f')}")
-        print(f"Bank account balance ${format(amount, '.2f')} ")
+        if amount >= withdraw:
+            amount -= withdraw
+            print(f"\nWithdraw in the amount of ${format(amount, '.2f')}")
+            print(f"Bank account balance ${format(amount, '.2f')}")
+        else:
+            print("\nThis transaction cannot be completed")
+            print("your balance",+amount, "is less than requested amount")
     else:
-        print("Thanks for choosing our bank")
         loggedOn = False
+        print("\nTransaction id :", random.randint(10000, 1000000))
 
-print("Transaction number:",random.randint(10000, 1000000))
+
+
