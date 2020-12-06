@@ -24,18 +24,16 @@ while loggedOn:
             print("\nUnsuccessful!!!\nUnable to withdraw", withdraw,
                   "\nInsufficient funds\nYou haveto cater for transaction charges too\nYour balance is", amount)
     elif selection == 3:
-        phoneNumber = int(input("Enter recievers number"))
-        if phoneNumber == 10:
-            sendMoney = float(input("Enter amount to send"))
-            if amount >= sendMoney + sendingCharges:
-                amount -= sendMoney + sendingCharges
-                print(f"\nSend in the amount of ${format(sendMoney, '.2f')}")
-                print(f"Bank account balance is ${format(amount, '.2f')}")
-            else:
-                print("Invalid Number.........try again.")
-
-
-
+        phoneNumber = int(input("Enter receivers number"))
+        sendMoney = int(input("Enter amount to send"))
+        print(f"\nsend money in the amount of ${format(sendMoney, '.2f')}")
+        if phoneNumber == 10 and amount >= sendMoney + sendingCharges:
+            amount -= sendMoney + sendingCharges
+            print(f"\nYour Balance is ${format(amount, '.2f')}")
+        elif amount < sendMoney + sendingCharges:
+            print(f"insufficient balance\nYour balance is ${format(amount, '.2f')}")
+        #else:
+           #print("invalid number.......try again")
     else:
         loggedOn = False
         print("\nTransaction id :", random.randint(10000, 1000000))
